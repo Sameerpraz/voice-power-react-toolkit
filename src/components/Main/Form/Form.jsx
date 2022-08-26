@@ -19,7 +19,8 @@ import formatDate from "../../../utils/formatDate";
 import useStyles from "./styles";
 import { useSpeechContext } from "@speechly/react-client";
 import CustomizedSnackbar from "../../Snackbar/Snackbar";
-
+import { useDispatch } from "react-redux";
+import { add } from "../../../store/expenseTrackerSlice";
 const initialState = {
   amount: "",
   category: "",
@@ -28,6 +29,7 @@ const initialState = {
 };
 const Form = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState(initialState);
   const [open, setOpen] = useState(false);
   const { addTransaction } = useContext(ExpenseTrackerContext);
@@ -43,7 +45,8 @@ const Form = () => {
       id: uuidv4(),
     };
     setOpen(true);
-    addTransaction(transaction);
+    // addTransaction(transaction);
+    dispatch(add(transaction));
     setFormData(initialState);
   };
 

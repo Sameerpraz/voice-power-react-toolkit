@@ -12,9 +12,11 @@ import Form from "./Form/Form";
 import List from "./List/List";
 import { ExpenseTrackerContext } from "../../context/context";
 import InfoCard from "../InfoCard";
+import { useSelector } from "react-redux";
 const Main = () => {
   const classes = useStyles();
-  const { balance } = useContext(ExpenseTrackerContext);
+  // const { balance } = useContext(ExpenseTrackerContext);
+  const { balance } = useSelector((state) => state.expenseTracker);
   return (
     <Card className={classes.root}>
       <CardHeader title="Expense Tracer" subheader="Powered by Speechly" />

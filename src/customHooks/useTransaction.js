@@ -6,9 +6,12 @@ import {
   resetCategories,
 } from "../constants/categories";
 
+import { useSelector } from "react-redux";
+
 const useTransactions = (title) => {
   resetCategories();
-  const { transactions } = useContext(ExpenseTrackerContext);
+  // const { transactions } = useContext(ExpenseTrackerContext);
+  const { transactions } = useSelector((state) => state.expenseTracker);
 
   //  filtering of data with type === title
   const rightTransactions = transactions.filter(

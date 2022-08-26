@@ -13,11 +13,21 @@ import {
 import { Delete, MoneyOff } from "@material-ui/icons";
 import useStyles from "./styles";
 import { ExpenseTrackerContext } from "../../../context/context";
+import { remove } from "../../../store/expenseTrackerSlice";
+import { useDispatch, useSelector } from "react-redux";
 const List = () => {
+  const dispatch = useDispatch();
   const classes = useStyles();
-  // destructuring of reducer
-  const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
 
+  const { transactions } = useSelector((state) => state.expenseTracker);
+
+  // destructuring of reducer
+  const { deleteTransaction } = useContext(ExpenseTrackerContext);
+  // const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
+
+  const handleRemove = (id) => {
+    dispatch(remove(id));
+  };
   return (
     <MUIList dense={false} className={classes.list}>
       {transactions.map((transaction) => (
@@ -50,7 +60,10 @@ const List = () => {
               <IconButton
                 edge="end"
                 aria-label="delete"
-                onClick={() => deleteTransaction(transaction.id)}
+                onClick={() => {
+                  deleteTransaction(transaction.id);
+                  handleRemove(transaction.id);
+                }}
               >
                 <Delete />
               </IconButton>
