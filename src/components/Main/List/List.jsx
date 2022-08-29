@@ -12,7 +12,6 @@ import {
 } from "@material-ui/core";
 import { Delete, MoneyOff } from "@material-ui/icons";
 import useStyles from "./styles";
-import { ExpenseTrackerContext } from "../../../context/context";
 import { remove } from "../../../store/expenseTrackerSlice";
 import { useDispatch, useSelector } from "react-redux";
 const List = () => {
@@ -22,8 +21,6 @@ const List = () => {
   const { transactions } = useSelector((state) => state.expenseTracker);
 
   // destructuring of reducer
-  const { deleteTransaction } = useContext(ExpenseTrackerContext);
-  // const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
 
   const handleRemove = (id) => {
     dispatch(remove(id));
@@ -61,7 +58,6 @@ const List = () => {
                 edge="end"
                 aria-label="delete"
                 onClick={() => {
-                  deleteTransaction(transaction.id);
                   handleRemove(transaction.id);
                 }}
               >

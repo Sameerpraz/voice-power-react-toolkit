@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { ExpenseTrackerContext } from "../context/context";
 import {
   incomeCategories,
   expenseCategories,
@@ -10,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const useTransactions = (title) => {
   resetCategories();
-  // const { transactions } = useContext(ExpenseTrackerContext);
+
   const { transactions } = useSelector((state) => state.expenseTracker);
 
   //  filtering of data with type === title

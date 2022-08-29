@@ -10,7 +10,7 @@ import {
 import useStyles from "./styles";
 import Form from "./Form/Form";
 import List from "./List/List";
-import { ExpenseTrackerContext } from "../../context/context";
+
 import InfoCard from "../InfoCard";
 import { useSelector } from "react-redux";
 const Main = () => {

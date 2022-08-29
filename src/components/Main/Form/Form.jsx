@@ -14,7 +14,7 @@ import {
   expenseCategories,
   incomeCategories,
 } from "../../../constants/categories";
-import { ExpenseTrackerContext } from "../../../context/context";
+
 import formatDate from "../../../utils/formatDate";
 import useStyles from "./styles";
 import { useSpeechContext } from "@speechly/react-client";
@@ -32,7 +32,7 @@ const Form = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(initialState);
   const [open, setOpen] = useState(false);
-  const { addTransaction } = useContext(ExpenseTrackerContext);
+
   const { segment } = useSpeechContext();
 
   const createTransaction = () => {
